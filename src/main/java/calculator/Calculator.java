@@ -13,7 +13,10 @@ public class Calculator {
         return a * b;
     }
 
-    public int division(int a, int b) {
+    public double division(Integer a, Integer b) {
+        if (a == null || b == null || b == 0)
+            throw new IllegalArgumentException("Cannot divide by zero.");
+
         return a / b;
     }
 }

@@ -2,7 +2,9 @@ package calculator;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class CalculatorTest {
 
@@ -12,6 +14,9 @@ public class CalculatorTest {
     public void before() {
         calculator = new Calculator();
     }
+
+    @Rule
+    public ExpectedException expectException = ExpectedException.none();
 
     @Test
     public void additionTest() {
@@ -59,9 +64,52 @@ public class CalculatorTest {
         int b = 2;
 
         // when
-        int result = calculator.division(a, b);
+        double result = calculator.division(a, b);
 
         // then
         Assert.assertEquals(1, result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void divisionByZeroTest() {
+        // given
+        int a = 3;
+        int b = 0;
+
+        // when
+        double result = calculator.division(a, b);
+
+        // then
+        // throw exception
+    }
+
+    @Test
+    public void divisionFirstValueNullPointerTest() {
+        // given
+        Integer a = null;
+        int b = 5;
+
+        // when
+        try {
+            double result = calculator.division(a, b);
+            assert false;
+        } catch (IllegalArgumentException exception) {
+            Assert.assertEquals("Cannot divide by zero.", exception.getMessage());
+            assert true;
+        }
+    }
+
+    @Test
+    public void divisionSecondValueNullPointerTest() {
+        // given
+        Integer a = 5;
+        Integer b = null;
+        expectException.expect(IllegalArgumentException.class);
+
+        // when
+        double result = calculator.division(a, b);
+
+        // then
+        // throw exception
     }
 }
