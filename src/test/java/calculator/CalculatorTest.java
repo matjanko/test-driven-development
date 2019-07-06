@@ -1,9 +1,17 @@
+package calculator;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 public class CalculatorTest {
+
+    Calculator calculator;
+
+    @Before
+    public void before() {
+        calculator = new Calculator();
+    }
 
     @Test
     public void additionTest() {
@@ -12,10 +20,10 @@ public class CalculatorTest {
         int b = 3;
 
         // when
-        int result = a + b;
+        int result = calculator.addition(a, b);
 
         // then
-        assertEquals(5, result);
+        Assert.assertEquals(5, result);
     }
 
     @Test
@@ -25,10 +33,10 @@ public class CalculatorTest {
         int b = 3;
 
         // when
-        int result = a - b;
+        int result = calculator.substraction(a, b);
 
         // then
-        assertEquals(-1, result);
+        Assert.assertEquals(-1, result);
     }
 
     @Test
@@ -38,10 +46,10 @@ public class CalculatorTest {
         int b = 3;
 
         // when
-        int result = a * b;
+        int result = calculator.multiplication(a, b);
 
         // then
-        assertEquals(6, result);
+        Assert.assertEquals(6, result);
     }
 
     @Test
@@ -51,9 +59,9 @@ public class CalculatorTest {
         int b = 2;
 
         // when
-        int result = a / b;
+        int result = calculator.substraction(a, b);
 
         // then
-        assertEquals(1, result);
+        Assert.assertEquals(1, result);
     }
 }
