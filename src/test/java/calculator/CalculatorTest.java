@@ -15,15 +15,9 @@ public class CalculatorTest {
 
     @Test
     public void additionTest() {
-        // given
-        int a = 2;
-        int b = 3;
-
-        // when
-        int result = calculator.addition(a, b);
-
-        // then
-        Assert.assertEquals(5, result);
+        additionParametrizedTest(5,5,10);
+        additionParametrizedTest(21, 1,22);
+        additionParametrizedTest(3,18,21);
     }
 
     @Test
@@ -63,5 +57,10 @@ public class CalculatorTest {
 
         // then
         Assert.assertEquals(1, result);
+    }
+
+    private void additionParametrizedTest(int a, int b, int expected) {
+        int result = calculator.addition(a, b);
+        Assert.assertEquals(result, expected);
     }
 }
