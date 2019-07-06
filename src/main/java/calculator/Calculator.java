@@ -19,4 +19,8 @@ public class Calculator {
 
         return a / b;
     }
+
+    public int calculateIntegral() {
+        return 0;
+    }
 }
