@@ -64,9 +64,4 @@ public class CalculatorTest {
         // then
         Assert.assertEquals(1, result);
     }
-
-    private void additionParametrizedTest(int a, int b, int expected) {
-        int result = calculator.addition(a, b);
-        Assert.assertEquals(result, expected);
-    }
 }
