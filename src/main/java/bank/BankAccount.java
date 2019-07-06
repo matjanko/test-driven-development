@@ -14,5 +14,8 @@ public class BankAccount implements IBankAccount{
 
     public void withdraw(int money) {
         amount -= money;
+
+        if (amount < -1000)
+            throw new IllegalStateException();
     }
 }

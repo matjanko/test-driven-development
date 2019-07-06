@@ -33,4 +33,14 @@ public class BankAccountTest {
 
         assertEquals(-1000, bankAccount.getAmount());
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void throwExceptionWhenDebMoreThan1000() {
+        // when
+        bankAccount.withdraw(1001);
+
+        //then
+        //throw exception
+    }
+
 }
