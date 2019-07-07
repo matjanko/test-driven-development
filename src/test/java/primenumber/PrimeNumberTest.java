@@ -2,6 +2,7 @@ package primenumber;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,5 +35,33 @@ public class PrimeNumberTest {
             list.add(Integer.parseInt(args[i]));
 
         Assert.assertEquals(list, primeNumber.getPrimeNumbers(range));
+    }
+
+    @Test
+    @Parameters ({
+            "1",
+            "2",
+            "30",
+            "60",
+    })
+    public void getPrimeNumberMinValueTest(int range) {
+        try {
+            Assertions.assertThat(primeNumber.getPrimeNumbers(range).get(0))
+                    .isEqualTo(2);
+        } catch (IndexOutOfBoundsException exception) {
+            assert true;
+        }
+    }
+
+    @Test
+    public void getPrimeNumberMaxValueTest() {
+        Assertions.assertThat(primeNumber.getPrimeNumbers(10).get(3))
+                .isEqualTo(7);
+    }
+
+    @Test
+    public void getPrimeMaxNumberCountsTest() {
+        Assertions.assertThat(primeNumber.getPrimeNumbers(10))
+                .hasSize(4);
     }
 }
